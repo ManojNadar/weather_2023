@@ -12,11 +12,13 @@ import Sunny from "../assets/images/Sunny.jpg";
 const BackgroundLayout = () => {
   const { weather } = useStateContext();
 
-  const [image, setImage] = useState(Clear);
+  const [image, setImage] = useState(Rainy);
 
   useEffect(() => {
     if (weather.conditions) {
       let imageString = weather.conditions;
+
+      console.log("useEffect background");
 
       if (imageString.toLowerCase().includes("clear")) {
         setImage(Clear);

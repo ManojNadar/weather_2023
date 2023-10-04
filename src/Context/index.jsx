@@ -6,8 +6,8 @@ const stateContext = createContext();
 export const StateContextProvider = ({ children }) => {
   const [weather, setWeather] = useState({});
   const [values, setValues] = useState([]);
-  const [location, setLocation] = useState("mumbai");
-  const [place, setPlace] = useState("mumbai");
+  const [place, setPlace] = useState("Jaipur");
+  const [location, setLocation] = useState("Jaipur");
 
   // fetch Api
 
@@ -17,22 +17,22 @@ export const StateContextProvider = ({ children }) => {
       url: "https://visual-crossing-weather.p.rapidapi.com/forecast",
       params: {
         aggregateHours: "24",
-        location: location,
-        contentType: "csv",
-        unitGroup: "us",
+        location: place,
+        contentType: "json",
+        unitGroup: "metric",
         shortColumnNames: "0",
       },
       headers: {
-        "X-RapidAPI-Key": "35d517fd59msh2347eeaa6a077b8p12faf1jsn48fd388d6979",
+        "X-RapidAPI-Key": "a8c015a484msh9d6aceac1ac1d6cp1b5e69jsna13d6fb113f2",
         "X-RapidAPI-Host": "visual-crossing-weather.p.rapidapi.com",
       },
     };
 
     try {
       const response = await axios.request(options);
-      console.log(response.data);
-
+      // console.log(response.data, "Actual API Data");
       const thisData = Object.values(response.data.locations)[0];
+      console.log(thisData, "This Data");
       setLocation(thisData.address);
       setValues(thisData.values);
       setWeather(thisData.values[0]);
@@ -42,12 +42,12 @@ export const StateContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchWeather();
+    // fetchWeather();
   }, [place]);
 
-  useEffect(() => {
-    console.log(values);
-  }, [values]);
+  // useEffect(() => {
+  //   console.log(values);
+  // }, [values]);
 
   return (
     <stateContext.Provider

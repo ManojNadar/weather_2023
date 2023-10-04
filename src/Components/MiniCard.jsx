@@ -7,11 +7,16 @@ import rain from "../assets/icons/rain.png";
 import snow from "../assets/icons/snow.png";
 import storm from "../assets/icons/storm.png";
 import windy from "../assets/icons/windy.png";
+import { useStateContext } from "../Context";
 
 const MiniCard = ({ time, temp, iconString }) => {
-  const [icon, setIcon] = useState();
+  const [icon, setIcon] = useState(sun);
+
+  const { weather } = useStateContext();
 
   useEffect(() => {
+    console.log("useEffect minicard");
+
     if (iconString) {
       if (iconString.toLowerCase().includes("cloud")) {
         setIcon(cloud);

@@ -19,11 +19,14 @@ const WeatherCard = ({
   iconString,
   conditions,
 }) => {
-  const [icon, setIcon] = useState(sun);
+  const [icon, setIcon] = useState();
 
   const { time } = useDate();
 
+  console.log(iconString, "iconsrtring");
+
   useEffect(() => {
+    console.log("useEffect weather card");
     if (iconString) {
       if (iconString.toLowerCase().includes("cloud")) {
         setIcon(cloud);
@@ -73,7 +76,7 @@ const WeatherCard = ({
       <hr className="bg-black" />
 
       <div className="w-full p-4 flex justify-center items-center text-3xl font-semibold">
-{conditions}
+        {conditions}
       </div>
     </div>
   );

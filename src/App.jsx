@@ -2,15 +2,18 @@ import { useState } from "react";
 import "./App.css";
 import search from "./assets/icons/search.svg";
 import { useStateContext } from "./Context/index.jsx";
-import BackgroundLayout from "./Components/BackgroundLayout";
-import WeatherCard from "./Components/WeatherCard";
-import MiniCard from "./Components/MiniCard";
+import { BackgroundLayout, WeatherCard, MiniCard } from "./Components";
 
 function App() {
   const [input, setInput] = useState("");
 
   const { weather, location, values, place, setPlace } = useStateContext();
   // console.log(weather);
+
+  const submit = () => {
+    setPlace(input);
+    setInput("");
+  };
 
   return (
     <>
@@ -33,7 +36,7 @@ function App() {
               value={input}
               onKeyUp={(e) => {
                 if (e.key === "Enter") {
-                  // submit the texxt
+                  submit();
                 }
               }}
             />
@@ -43,10 +46,10 @@ function App() {
 
         <main className="w-full flex flex-wrap gap-8 py-4 px-[10%] items-center justify-center">
           <WeatherCard
-            place={place}
+            place={location}
             windspeed={weather.wspd}
             humidity={weather.humidity}
-            temperature={weather.temperature}
+            temperature={weather.temp}
             heatIndex={weather.heatIndex}
             iconString={weather.conditions}
             conditions={weather.conditions}
@@ -59,7 +62,7 @@ function App() {
                   key={curr.datetime}
                   time={curr.datetime}
                   temp={curr.temp}
-                  iconString={curr.condtions}
+                  iconString={curr.conditions}
                 />
               );
             })}
