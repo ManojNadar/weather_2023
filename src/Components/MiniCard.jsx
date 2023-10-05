@@ -7,7 +7,7 @@ import rain from "../assets/icons/rain.png";
 import snow from "../assets/icons/snow.png";
 import storm from "../assets/icons/storm.png";
 import windy from "../assets/icons/windy.png";
-import partialCloud from "../assets/icons/PartiallyCloud.png";
+// import partialCloud from "../assets/icons/PartiallyCloud.png";
 
 const MiniCard = ({ time, temp, iconString }) => {
   const [icon, setIcon] = useState();
@@ -30,12 +30,13 @@ const MiniCard = ({ time, temp, iconString }) => {
         setIcon(snow);
       } else if (iconString.toLowerCase().includes("wind")) {
         setIcon(windy);
-      } else if (
-        iconString.toLowerCase().includes("overcast") ||
-        iconString.toLowerCase().includes("partially cloudy")
-      ) {
-        setIcon(partialCloud);
       }
+      // else if (
+      //   iconString.toLowerCase().includes("overcast") ||
+      //   iconString.toLowerCase().includes("partially cloudy")
+      // ) {
+      //   setIcon(partialCloud);
+      // }
     }
   }, [iconString]);
 
