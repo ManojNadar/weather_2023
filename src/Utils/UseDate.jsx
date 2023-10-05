@@ -12,7 +12,7 @@ export const useDate = () => {
     return () => {
       clearInterval(timer);
     };
-  }, []);
+  }, [today]);
 
   const day = today.toLocaleDateString(locale, { weekday: "long" });
 
@@ -21,9 +21,9 @@ export const useDate = () => {
   })}\n\n`;
 
   const time = today.toLocaleDateString(locale, {
-    hour: "numeric",
-    hour12: true,
-    minute: "numeric",
+    // hour: "numeric",
+    // hour12: true,
+    // minute: "numeric",
   });
 
   return {

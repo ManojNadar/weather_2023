@@ -18,21 +18,20 @@ function App() {
   return (
     <>
       <div className="w-full h-screen text-white">
-        <nav className="w-full flex justify-between items-center ">
-          <h1 className="text-white font-bold tracking-wide text-3xl">
-            Weather App
-          </h1>
+        <nav className="w-full flex justify-around items-center pt-2 pb-3">
+          <h1 className="w-[auto] text-4xl font-bold">Weather App</h1>
 
-          <div className="bg-white w-[15rem] overflow-hidden shadow-2xl rounded flex-items-center gap-2">
+          <div className="w-[25rem] flex relative">
             <img
               src={search}
               alt="search"
-              className="w-[3.5rem] h-[3.5rem] py-3"
+              className="absolute w-[1.1rem] h-[1.1rem] mt-2 ml-2 "
             />
             <input
               type="text"
-              className="focus:outline-none w-full text-[#212121] text-lg"
+              className="w-[40rem] h-[2rem] border-black focus:outline-none pl-10 placeholder-black placeholder:text-slate-400 pb-1 text-black"
               onChange={(e) => setInput(e.target.value)}
+              placeholder="Search Location"
               value={input}
               onKeyUp={(e) => {
                 if (e.key === "Enter") {
@@ -41,10 +40,14 @@ function App() {
               }}
             />
           </div>
+
+          <div className="w-[auto]  text-2xl font-bold">
+            {new Date().toDateString()}
+          </div>
         </nav>
         <BackgroundLayout />
 
-        <main className="w-full flex flex-wrap gap-8 py-4 px-[10%] items-center justify-center">
+        <main className="">
           <WeatherCard
             place={location}
             windspeed={weather.wspd}
@@ -53,17 +56,20 @@ function App() {
             heatIndex={weather.heatIndex}
             iconString={weather.conditions}
             conditions={weather.conditions}
+            visibility={weather.visibility}
           />
 
-          <div className="flex justify-center gap-8 flex-wrap w-[60%]">
+          <div className="w-[90rem] h-[15rem] mt-10 m-auto flex justify-around">
             {values?.slice(1, 7).map((curr) => {
               return (
-                <MiniCard
-                  key={curr.datetime}
-                  time={curr.datetime}
-                  temp={curr.temp}
-                  iconString={curr.conditions}
-                />
+                <div className="w-[12rem] h-[12rem] bg-black glassCardRound text-center overflow-hidden">
+                  <MiniCard
+                    key={curr.datetime}
+                    time={curr.datetime}
+                    temp={curr.temp}
+                    iconString={curr.conditions}
+                  />
+                </div>
               );
             })}
           </div>

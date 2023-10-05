@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useDate } from "../Utils/UseDate";
 import "../index.css";
 
 import sun from "../assets/icons/sun.png";
@@ -16,12 +15,11 @@ const WeatherCard = ({
   humidity,
   place,
   heatIndex,
+  visibility,
   iconString,
   conditions,
 }) => {
-  const [icon, setIcon] = useState();
-
-  const { time } = useDate();
+  const [icon, setIcon] = useState(rain);
 
   console.log(iconString, "iconsrtring");
 
@@ -46,40 +44,71 @@ const WeatherCard = ({
     }
   }, [iconString]);
   return (
-    <div className="w-[22rem] min-w-[22rem] h-[30rem] glassCard p-4">
-      <div className="flex w-full justify-center items-center gap-4 mt-12 mb-4">
-        <img src={icon} alt="weather icon" />
-        <p className="font-bold text-5xl flex justify-center items-center">
-          {temperature} &deg;C
-        </p>
-
-        <div className="font-bold text-center text-xl">{place}</div>
-        <div className="w-full flex justify-center items-center mt-4">
-          <p className="flex-1 text-center p-2">{new Date().toDateString()}</p>
-          <p className="flex-1 text-center p-2">{time}</p>
+    <div className="w-[92rem] h-[15rem] ml-auto mr-auto mt-10 flex glassCard ">
+      <div className="flex">
+        <div className="w-[10rem] h-[10rem]">
+          <img
+            src={icon}
+            alt="weather icon"
+            className="w-[8rem] h-[8rem] mt-10 ml-5 "
+          />
         </div>
 
-        <div className="w-full flex justify-between items-center mt-4 gap-2">
-          <p className="font-normal bg-blue">Wind Speed{windspeed}</p>
-          <p className="flex-1 text-center p-2 font-bold rounded-lg bg-green">
-            Humidity {humidity}
-          </p>
+        <div className="w-[17rem]  text-center pt-20">
+          <div className="font-bold text-3xl">{place}</div>
+          <p className="font-bold text-2xl">{temperature}&deg;C</p>
         </div>
       </div>
 
-      <div className="w-full p-3 mt-4 flex justify-between items-center">
-        <p className="font-semibold text-lg">
-          Heat Index {heatIndex ? heatIndex : "N/A"}
-        </p>
+      <div className="flex pl-10 w-[50rem] justify-around">
+        <div className="w-[10rem]  text-center font-bold text-xl pt-20">
+          <p>Wind Speed</p>
+          <p>{windspeed} km/h</p>
+        </div>
+        <div className="w-[10rem]  text-center font-bold text-xl pt-20">
+          <p>Humidity</p>
+          <p>{humidity} %</p>
+        </div>
+        <div className="w-[10rem]  text-center font-bold text-xl pt-20">
+          <p>Visibility</p>
+          <p>{visibility ? visibility : "N/A"} km</p>
+        </div>
+        <div className="w-[10rem]  text-center font-bold text-xl pt-20">
+          <p>Heat Index</p>
+          <p>{heatIndex ? heatIndex : "N/A"}&deg;C</p>
+        </div>
       </div>
-
-      <hr className="bg-black" />
-
-      <div className="w-full p-4 flex justify-center items-center text-3xl font-semibold">
-        {conditions}
+      <div className="w-[10rem] items-center font-bold text-4xl flex ml-5 pl-8">
+        <p>{conditions}</p>
       </div>
     </div>
   );
 };
 
 export default WeatherCard;
+
+{
+  /* <div className="">
+<img src={icon} alt="weather icon" />
+<p className="">{temperature} &deg;C</p>
+
+<div className="">{place}</div>
+<div className="">
+  <p className="">{new Date().toDateString()}</p>
+  <p className="">{time}</p>
+</div>
+
+<div className="">
+  <p className="">Wind Speed{windspeed}</p>
+  <p className="">Humidity {humidity}</p>
+</div>
+</div>
+
+<div className="">Heat Index {heatIndex ? heatIndex : "N/A"}</div>
+
+<hr className="bg-black" /> 
+ */
+}
+{
+  /* <div className="">{conditions}</div> */
+}
