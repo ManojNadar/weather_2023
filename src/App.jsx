@@ -10,6 +10,39 @@ function App() {
   const { weather, location, values, place, setPlace } = useStateContext();
   // console.log(weather);
 
+  const fakeData = [
+    {
+      datetime: new Date(),
+      temp: 28.9,
+      conditions: "Clear",
+    },
+    {
+      datetime: new Date(),
+      temp: 28.9,
+      conditions: "Clear",
+    },
+    {
+      datetime: new Date(),
+      temp: 28.9,
+      conditions: "Clear",
+    },
+    {
+      datetime: new Date(),
+      temp: 28.9,
+      conditions: "Clear",
+    },
+    {
+      datetime: new Date(),
+      temp: 28.9,
+      conditions: "Clear",
+    },
+    {
+      datetime: new Date(),
+      temp: 28.9,
+      conditions: "Clear",
+    },
+  ];
+
   const submit = () => {
     setPlace(input);
     setInput("");
@@ -60,18 +93,37 @@ function App() {
           />
 
           <div className="w-[90rem] h-[15rem] mt-10 m-auto flex justify-around">
-            {values?.slice(1, 7).map((curr) => {
-              return (
-                <div className="w-[12rem] h-[12rem] bg-black glassCardRound text-center overflow-hidden">
-                  <MiniCard
-                    key={curr.datetime}
-                    time={curr.datetime}
-                    temp={curr.temp}
-                    iconString={curr.conditions}
-                  />
-                </div>
-              );
-            })}
+            {values?.length ? (
+              <div className="w-[90rem] h-[15rem] mt-10 m-auto flex justify-around">
+                {values?.slice(1, 7).map((curr) => {
+                  return (
+                    <div className="w-[12rem] h-[12rem] bg-black glassCardRound text-center overflow-hidden">
+                      <MiniCard
+                        key={curr.datetime}
+                        time={curr.datetime}
+                        temp={curr.temp}
+                        iconString={curr.conditions}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="w-[90rem] h-[15rem] mt-10 m-auto flex justify-around">
+                {fakeData?.map((curr) => {
+                  return (
+                    <div className="w-[12rem] h-[12rem] bg-black glassCardRound text-center overflow-hidden">
+                      <MiniCard
+                        key={curr.datetime}
+                        time={curr.datetime}
+                        temp={curr.temp}
+                        iconString={curr.conditions}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </main>
       </div>

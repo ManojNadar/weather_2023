@@ -56,59 +56,35 @@ const WeatherCard = ({
 
         <div className="w-[17rem]  text-center pt-20">
           <div className="font-bold text-3xl">{place}</div>
-          <p className="font-bold text-2xl">{temperature}&deg;C</p>
+          <p className="font-bold text-2xl">
+            {temperature ? temperature : "0"}&deg;C
+          </p>
         </div>
       </div>
 
       <div className="flex pl-10 w-[50rem] justify-around">
         <div className="w-[10rem]  text-center font-bold text-xl pt-20">
           <p>Wind Speed</p>
-          <p>{windspeed} km/h</p>
+          <p>{windspeed ? windspeed : "0"} km/h</p>
         </div>
         <div className="w-[10rem]  text-center font-bold text-xl pt-20">
           <p>Humidity</p>
-          <p>{humidity} %</p>
+          <p>{humidity ? humidity : "0"} %</p>
         </div>
         <div className="w-[10rem]  text-center font-bold text-xl pt-20">
           <p>Visibility</p>
-          <p>{visibility ? visibility : "N/A"} km</p>
+          <p>{visibility ? visibility : "0"} km</p>
         </div>
         <div className="w-[10rem]  text-center font-bold text-xl pt-20">
           <p>Heat Index</p>
           <p>{heatIndex ? heatIndex : "N/A"}&deg;C</p>
         </div>
       </div>
-      <div className="w-[10rem] items-center font-bold text-4xl flex ml-5 pl-8">
-        <p>{conditions}</p>
+      <div className="w-[10rem] items-center font-bold text-4xl flex ml-5 pl-8 text-center">
+        <p>{conditions}Partially Cloud</p>
       </div>
     </div>
   );
 };
 
 export default WeatherCard;
-
-{
-  /* <div className="">
-<img src={icon} alt="weather icon" />
-<p className="">{temperature} &deg;C</p>
-
-<div className="">{place}</div>
-<div className="">
-  <p className="">{new Date().toDateString()}</p>
-  <p className="">{time}</p>
-</div>
-
-<div className="">
-  <p className="">Wind Speed{windspeed}</p>
-  <p className="">Humidity {humidity}</p>
-</div>
-</div>
-
-<div className="">Heat Index {heatIndex ? heatIndex : "N/A"}</div>
-
-<hr className="bg-black" /> 
- */
-}
-{
-  /* <div className="">{conditions}</div> */
-}
