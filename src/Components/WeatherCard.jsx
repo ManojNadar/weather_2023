@@ -81,7 +81,7 @@ const WeatherCard = ({
         </div>
       </div>
       <div className="w-[10rem] items-center font-bold text-4xl flex ml-5 pl-8 text-center">
-        <p>{conditions}Partially Cloud</p>
+        <p>{conditions ? conditions : "Partially Cloud"}</p>
       </div>
     </div>
   );

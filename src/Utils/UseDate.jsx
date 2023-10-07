@@ -21,9 +21,9 @@ export const useDate = () => {
   })}\n\n`;
 
   const time = today.toLocaleDateString(locale, {
-    // hour: "numeric",
-    // hour12: true,
-    // minute: "numeric",
+    hour: "numeric",
+    hour12: true,
+    minute: "numeric",
   });
 
   return {
