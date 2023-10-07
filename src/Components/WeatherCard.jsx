@@ -22,7 +22,7 @@ const WeatherCard = ({
 }) => {
   const [icon, setIcon] = useState(rain);
 
-  const { time, date } = useDate();
+  const { date } = useDate();
 
   // console.log(iconString, "iconsrtring");
 
@@ -58,7 +58,7 @@ const WeatherCard = ({
         </div>
 
         <div className="w-[17rem] text-center pt-20">
-          <p className="font-bold text-lg">{time}</p>
+          <p className="font-bold text-lg">{date}</p>
           <div className="font-bold text-3xl">{place}</div>
           <p className="font-bold text-2xl">
             {temperature ? temperature : "0"}&deg;C

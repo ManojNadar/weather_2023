@@ -11,7 +11,7 @@ function App() {
   const { weather, location, values, place, setPlace } = useStateContext();
   // console.log(weather);
 
-  const { time, date } = useDate();
+  const { time } = useDate();
 
   const fakeData = [
     {
@@ -63,7 +63,7 @@ function App() {
         <nav className="w-full flex justify-around items-center pt-2 pb-3">
           <h1 className="w-[auto] text-4xl font-bold">Weather App</h1>
 
-          <div className="w-[25rem] flex relative">
+          <div className="w-[25rem] flex relative mt-2">
             <img
               src={search}
               alt="search"
@@ -83,7 +83,7 @@ function App() {
             />
           </div>
 
-          <div className="w-[auto]  text-2xl font-bold">{date}</div>
+          <div className="w-[auto]  text-2xl font-bold">{time}</div>
         </nav>
         <BackgroundLayout />
 
