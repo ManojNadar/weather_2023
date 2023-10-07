@@ -8,6 +8,7 @@ import rain from "../assets/icons/rain.png";
 import snow from "../assets/icons/snow.png";
 import storm from "../assets/icons/storm.png";
 import windy from "../assets/icons/windy.png";
+import { useDate } from "../Utils/UseDate";
 
 const WeatherCard = ({
   temperature,
@@ -21,10 +22,12 @@ const WeatherCard = ({
 }) => {
   const [icon, setIcon] = useState(rain);
 
-  console.log(iconString, "iconsrtring");
+  const { time, date } = useDate();
+
+  // console.log(iconString, "iconsrtring");
 
   useEffect(() => {
-    console.log("useEffect weather card");
+    // console.log("useEffect weather card");
     if (iconString) {
       if (iconString.toLowerCase().includes("cloud")) {
         setIcon(cloud);
@@ -50,11 +53,12 @@ const WeatherCard = ({
           <img
             src={icon}
             alt="weather icon"
-            className="w-[8rem] h-[8rem] mt-10 ml-5 "
+            className="w-[8rem] h-[8rem] mt-10 ml-6 "
           />
         </div>
 
-        <div className="w-[17rem]  text-center pt-20">
+        <div className="w-[17rem] text-center pt-20">
+          <p className="font-bold text-lg">{time}</p>
           <div className="font-bold text-3xl">{place}</div>
           <p className="font-bold text-2xl">
             {temperature ? temperature : "0"}&deg;C

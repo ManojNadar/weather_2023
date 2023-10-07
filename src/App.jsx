@@ -3,6 +3,7 @@ import "./App.css";
 import search from "./assets/icons/search.svg";
 import { useStateContext } from "./Context/index.jsx";
 import { BackgroundLayout, WeatherCard, MiniCard } from "./Components";
+import { useDate } from "./Utils/UseDate";
 
 function App() {
   const [input, setInput] = useState("");
@@ -10,36 +11,44 @@ function App() {
   const { weather, location, values, place, setPlace } = useStateContext();
   // console.log(weather);
 
+  const { time, date } = useDate();
+
   const fakeData = [
     {
       datetime: new Date(),
       temp: 28.9,
       conditions: "Clear",
+      id: 1,
     },
     {
       datetime: new Date(),
       temp: 28.9,
       conditions: "Clear",
+      id: 2,
     },
     {
       datetime: new Date(),
       temp: 28.9,
       conditions: "Clear",
+      id: 3,
     },
     {
       datetime: new Date(),
       temp: 28.9,
       conditions: "Clear",
+      id: 4,
     },
     {
       datetime: new Date(),
       temp: 28.9,
       conditions: "Clear",
+      id: 5,
     },
     {
       datetime: new Date(),
       temp: 28.9,
       conditions: "Clear",
+      id: 6,
     },
   ];
 
@@ -74,9 +83,7 @@ function App() {
             />
           </div>
 
-          <div className="w-[auto]  text-2xl font-bold">
-            {new Date().toDateString()}
-          </div>
+          <div className="w-[auto]  text-2xl font-bold">{date}</div>
         </nav>
         <BackgroundLayout />
 
@@ -97,7 +104,10 @@ function App() {
               <div className="w-[90rem] h-[15rem] mt-10 m-auto flex justify-around">
                 {values?.slice(1, 7).map((curr) => {
                   return (
-                    <div className="w-[12rem] h-[12rem] bg-black glassCardRound text-center overflow-hidden">
+                    <div
+                      key={curr.address}
+                      className="w-[12rem] h-[12rem] bg-black glassCardRound text-center overflow-hidden"
+                    >
                       <MiniCard
                         key={curr.datetime}
                         time={curr.datetime}
@@ -112,7 +122,10 @@ function App() {
               <div className="w-[90rem] h-[15rem] mt-10 m-auto flex justify-around">
                 {fakeData?.map((curr) => {
                   return (
-                    <div className="w-[12rem] h-[12rem] bg-black glassCardRound text-center overflow-hidden">
+                    <div
+                      key={curr.id}
+                      className="w-[12rem] h-[12rem] bg-black glassCardRound text-center overflow-hidden"
+                    >
                       <MiniCard
                         key={curr.datetime}
                         time={curr.datetime}
